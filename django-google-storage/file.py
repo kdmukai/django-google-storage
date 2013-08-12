@@ -36,7 +36,7 @@ class GSBotoStorageFile(File):
         return super(GSBotoStorageFile, self).read(*args, **kwargs)
 
     def write(self, *args, **kwargs):
-        if 'w' not in self._mode:
+        if 'w' not in self._mode and 'a' not in self._mode:
             raise AttributeError("File was opened for read-only access.")
         self._is_dirty = True
         return super(GSBotoStorageFile, self).write(*args, **kwargs)
